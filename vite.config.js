@@ -18,7 +18,6 @@ export default defineConfig(({ mode }) => {
       })
     ],
     server: {
-      host: true,
       proxy: {
         // Proxy POST /feedback to backend when VITE_API_URL is not set
         '/feedback': {
