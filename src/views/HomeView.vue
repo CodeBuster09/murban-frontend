@@ -57,7 +57,8 @@ const sendContact = async () => {
   emailError.value = ''
   isSending.value = true
   try {
-    const res = await fetch('/feedback', {
+    const apiBase = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+    const res = await fetch(`${apiBase}/feedback`, {
       method: 'POST',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
