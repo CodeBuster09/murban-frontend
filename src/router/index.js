@@ -9,9 +9,12 @@ const router = createRouter({
     { path: '/plans', name: 'plans', component: PlansView }
   ],
   scrollBehavior(to, from, savedPosition) {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    const behavior = isMobile ? 'auto' : 'smooth'
+
     if (savedPosition) return savedPosition
-    if (to.hash) return { el: to.hash, behavior: 'smooth' }
-    return { top: 0, behavior: 'smooth' }
+    if (to.hash) return { el: to.hash, behavior }
+    return { top: 0, behavior }
   }
 })
 

@@ -83,15 +83,15 @@ onUnmounted(() => {
         </li>
       </ul>
 
-      <a href="/#contact" class="btn-primary gt-sm">START A PROJECT</a>
+      <a href="/#contact" class="btn-primary nav-cta">START A PROJECT</a>
 
       <!-- Mobile Menu Button -->
       <q-btn
         flat dense round
         icon="menu"
-        class="lt-md text-white"
+        class="nav-menu-btn text-white"
+        aria-label="Open menu"
         @click="drawerOpen = !drawerOpen"
-        style="cursor: none;"
       />
     </nav>
 

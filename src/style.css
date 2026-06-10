@@ -28,6 +28,8 @@ body {
   overflow-x: hidden;
   cursor: none;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* ========================================
@@ -109,21 +111,34 @@ h1, h2, h3, h4, h5, h6,
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 3000;
   padding: 1.4rem 4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid transparent;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(5, 5, 7, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   transition: border-color 0.4s, background 0.4s, padding 0.4s;
 }
 
 .murban-nav.scrolled {
-  background: rgba(5, 5, 7, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(5, 5, 7, 0.96);
   border-color: var(--border);
   padding: 1rem 4rem;
+}
+
+/* Nav CTA + hamburger — CSS-controlled so Windows/scaled viewports match link visibility */
+.murban-nav .nav-cta {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.nav-menu-btn {
+  display: none;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -205,10 +220,11 @@ h1, h2, h3, h4, h5, h6,
    ======================================== */
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 4rem;
+  padding: 7rem 4rem 8rem;
   position: relative;
   box-shadow: 0 6px 18px rgba(0, 47, 255, 0.45);
   overflow: hidden;
@@ -444,8 +460,8 @@ h1, h2, h3, h4, h5, h6,
 .hero h1 {
   font-family: var(--font-heading);
   font-size: clamp(4rem, 10vw, 10rem);
-  line-height: 0.92;
-  letter-spacing: -0.01em;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
   color: var(--white);
   margin-bottom: 2rem;
 }
@@ -472,11 +488,12 @@ h1, h2, h3, h4, h5, h6,
   display: flex;
   gap: 1rem;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .hero-scroll {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: 3rem;
   left: 4rem;
   display: flex;
   align-items: center;
@@ -1411,13 +1428,138 @@ section {
 /* ========================================
    Responsive
    ======================================== */
-@media (max-width: 768px) {
-  .murban-nav {
-    padding: 1rem 1.5rem;
+
+/* Medium laptops & Windows display scaling (125–150%) — common ~1024–1366px viewports */
+@media (max-width: 1200px) {
+  .murban-nav,
+  .murban-nav.scrolled {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
+  .nav-links {
+    gap: 2rem;
+  }
+
+  .hero {
+    padding: 6.5rem 2rem 7rem;
+  }
+
+  .hero-scroll {
+    left: 2rem;
+  }
+
+  section {
+    padding: 6rem 2rem;
+  }
+
+  .cta-section {
+    padding: 6rem 2rem;
+  }
+
+  .murban-footer {
+    padding: 2.5rem 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-card {
+    padding: 2rem 1.75rem;
+  }
+
+  .metric-item {
+    padding: 2rem 1.5rem;
+  }
+
+  .metric-num {
+    font-size: 2.75rem;
+  }
+
+  .plans-hero {
+    padding: 5rem 2rem 3rem;
+  }
+
+  .plans-section {
+    padding: 3rem 2rem 6rem;
+  }
+
+  .plan-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    gap: 1.75rem;
+  }
+
+  .plan-actions {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .plan-optional {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+/* Tablet & small laptop — Windows scaled displays often land here */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+  }
+
+  .murban-nav .nav-cta {
+    display: none;
+  }
+
+  .nav-menu-btn {
+    display: inline-flex;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem, 9vw, 6.5rem);
+    line-height: 1.08;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+  }
+
+  .metrics-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-step {
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+
+  .step-duration {
+    display: none;
+  }
+
+  .cta-input,
+  .cta-textarea {
+    width: 100%;
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .murban-nav,
   .murban-nav.scrolled {
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 1.5rem;
+    transition: border-color 0.4s, background 0.4s;
   }
 
   .nav-links {
@@ -1425,7 +1567,17 @@ section {
   }
 
   .hero {
-    padding: 0 1.5rem;
+    min-height: auto;
+    justify-content: flex-start;
+    padding: 6rem 1.5rem 6.5rem;
+  }
+
+  .hero-actions {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-scroll {
+    bottom: 2rem;
   }
 
   section {
@@ -1622,6 +1774,7 @@ section {
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 3.5rem;
+    line-height: 1.1;
   }
 
   .metric-num {
@@ -1635,5 +1788,36 @@ section {
   .hero-actions {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* Short viewports — desktop/laptop only (not phones) */
+@media (max-height: 820px) and (min-width: 769px) {
+  .hero {
+    justify-content: flex-start;
+    padding-top: 6.5rem;
+    padding-bottom: 7.5rem;
+  }
+
+  .hero h1 {
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-badge {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-sub {
+    margin-bottom: 1.75rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-actions {
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-scroll {
+    bottom: 2.25rem;
   }
 }
