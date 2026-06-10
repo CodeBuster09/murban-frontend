@@ -113,10 +113,10 @@ const services = [
   { icon: '🤝', title: 'CRM Solutions', desc: 'Streamline customer relationships with smart CRM systems that keep your team organised and your clients happy.' },
   { icon: '📊', title: 'Lead Management', desc: 'Capture, track, and nurture every lead through a structured pipeline so no opportunity slips through the cracks.' },
   { icon: '📍', title: 'Business Page Setup', desc: 'Get discovered locally with a fully optimised Google My Business profile that builds trust and drives foot traffic.' },
-  { icon: '💬', title: 'WhatsApp Automation', desc: 'Automate customer conversations, follow-ups, and support on WhatsApp — available 24/7 without lifting a finger.' },
+  { icon: '📱', title: 'Social Media & WhatsApp Automation', desc: 'Automate WhatsApp conversations, follow-ups, and social media publishing across all platforms — stay consistent and engage your audience on autopilot.' },
+  { icon: '📣', title: 'Meta & Google Ads', desc: 'Run and optimise paid campaigns across Meta and Google Ads to reach the right audience, drive leads, and grow your business with measurable results.' },
   { icon: '🤖', title: 'AI Automation', desc: 'Replace repetitive tasks with intelligent AI workflows that save time, reduce errors, and scale your operations effortlessly.' },
-  { icon: '🔍', title: 'SEO', desc: 'Rank higher on Google with proven on-page and off-page SEO strategies that bring consistent, organic traffic to your site.' },
-  { icon: '📱', title: 'Social Media Marketing Automation', desc: 'Schedule, publish, and analyse content across all platforms automatically — stay consistent and grow your audience on autopilot.' }
+  { icon: '🔍', title: 'SEO', desc: 'Rank higher on Google with proven on-page and off-page SEO strategies that bring consistent, organic traffic to your site.' }
 ]
 
 const processSteps = [
