@@ -158,12 +158,15 @@ const sendContact = async () => {
 
 // ─── Data ───
 const services = [
-  { icon: '🎨', title: 'BRAND STRATEGY', desc: 'We shape brand identities that resonate, crafting visual language and positioning that sets you apart in competitive markets.' },
-  { icon: '💻', title: 'WEB DESIGN', desc: 'Pixel-perfect interfaces designed for conversion. Every layout decision is informed by user research and aesthetic mastery.' },
-  { icon: '⚡', title: 'DEVELOPMENT', desc: 'High-performance frontend engineering with Vue, React, and modern frameworks. Clean code that scales effortlessly.' },
-  { icon: '📱', title: 'MOBILE FIRST', desc: 'Responsive experiences that feel native on every device. Touch-optimized interactions and fluid adaptive layouts.' },
-  { icon: '🔍', title: 'SEO & GROWTH', desc: 'Technical SEO, performance audits, and growth engineering. We ensure your digital presence reaches its audience.' },
-  { icon: '🚀', title: 'LAUNCH & SCALE', desc: 'From MVP to enterprise. CI/CD pipelines, monitoring, and iterative improvement to sustain your growth trajectory.' }
+  { icon: '🎯', title: 'Brand Strategy & Analysis', desc: 'We craft a clear brand identity and competitive analysis to position your business for lasting growth and recognition.' },
+  { icon: '💻', title: 'Web Development', desc: 'Fast, responsive, and conversion-focused websites built to represent your brand and turn visitors into customers.' },
+  { icon: '🤝', title: 'CRM Solutions', desc: 'Streamline customer relationships with smart CRM systems that keep your team organised and your clients happy.' },
+  { icon: '📊', title: 'Lead Management', desc: 'Capture, track, and nurture every lead through a structured pipeline so no opportunity slips through the cracks.' },
+  { icon: '📍', title: 'Business Page Setup', desc: 'Get discovered locally with a fully optimised Google My Business profile that builds trust and drives foot traffic.' },
+  { icon: '💬', title: 'WhatsApp Automation', desc: 'Automate customer conversations, follow-ups, and support on WhatsApp — available 24/7 without lifting a finger.' },
+  { icon: '🤖', title: 'AI Automation', desc: 'Replace repetitive tasks with intelligent AI workflows that save time, reduce errors, and scale your operations effortlessly.' },
+  { icon: '🔍', title: 'SEO', desc: 'Rank higher on Google with proven on-page and off-page SEO strategies that bring consistent, organic traffic to your site.' },
+  { icon: '📱', title: 'Social Media Marketing Automation', desc: 'Schedule, publish, and analyse content across all platforms automatically — stay consistent and grow your audience on autopilot.' }
 ]
 
 const processSteps = [
@@ -174,17 +177,17 @@ const processSteps = [
 ]
 
 const testimonials = [
-  { text: 'MURBAN transformed our entire digital presence. The attention to micro-interactions and performance optimization was extraordinary. Our conversion rate increased by 340% within the first quarter.', name: 'Elena Vasquez', role: 'CEO, Nexus Ventures', initials: 'EV' },
-  { text: 'Working with MURBAN felt like having an in-house design team that actually understands engineering. The codebase they delivered is the cleanest I have ever seen in 15 years of tech.', name: 'James Thornton', role: 'CTO, Helix Labs', initials: 'JT' },
-  { text: 'They did not just build us a website — they crafted a digital experience. Every scroll, every hover, every transition feels intentional. Our clients constantly ask who designed our site.', name: 'Sarah Kim', role: 'Creative Director, Prism Agency', initials: 'SK' },
-  { text: 'The ROI was immediate. Within two months of launching the new site, our qualified leads tripled and our bounce rate dropped by 60%. MURBAN delivers results, not just pixels.', name: 'Marcus Chen', role: 'VP Marketing, AeroStack', initials: 'MC' }
+  { text: 'MURBAN transformed our digital presence. Their attention to micro-interactions and performance optimisation increased our conversion rate by 180% within three months.', name: 'Riya Kapoor', role: 'Founder, Nayi Ventures', initials: 'RK' },
+  { text: 'Working with MURBAN felt like having an in-house design team that truly understands engineering. The codebase they delivered is the cleanest I\'ve seen.', name: 'Arjun Mehta', role: 'Head, AgriSense', initials: 'AM' },
+  { text: 'They didn\'t just build us a website — they crafted a digital experience. Every interaction feels intentional; our clients constantly ask who designed it.', name: 'Priya Nair', role: 'Creative Head, Studio Bloom', initials: 'PN' },
+  { text: 'We saw immediate ROI. Within two months of launch, qualified leads doubled and our bounce rate dropped by 45%. MURBAN delivers measurable results.', name: 'Vikram Singh', role: 'Head, Elevate Commerce', initials: 'VS' }
 ]
 
 const metrics = [
-  { value: 142, suffix: '+', label: 'Projects Delivered', fill: 92 },
+  { value: 20, suffix: '+', label: 'Projects Delivered', fill: 92 },
   { value: 98, suffix: '%', label: 'Client Retention', fill: 98 },
-  { value: 30, suffix: '+', label: 'Design Awards', fill: 78 },
-  { value: 10, suffix: '+', label: 'Years Experience', fill: 88 }
+  { value: 12, suffix: '+', label: 'Clients Served', fill: 60 },
+  { value: 10, suffix: '+', label: 'Active Projects', fill: 30 }
 ]
 
 const tickerItems = [
