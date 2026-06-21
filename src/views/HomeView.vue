@@ -5,6 +5,7 @@ import ScrollReveal from '../components/ScrollReveal.vue'
 import MetricCounter from '../components/MetricCounter.vue'
 import ServiceCard from '../components/ServiceCard.vue'
 import ProcessStepCard from '../components/ProcessStepCard.vue'
+import TestimonialCard from '../components/TestimonialCard.vue'
 
 const contactEmail = ref('')
 const contactMessage = ref('')
@@ -332,29 +333,26 @@ onMounted(() => {
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials">
-      <div class="section-label reveal">CLIENT STORIES</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        TRUSTED <span class="dim">BY THE</span><br>
-        BEST
-      </h2>
+    <section id="testimonials" class="testimonials-section">
+      <div class="testimonials-inner">
+        <div class="testimonials-header reveal">
+          <div class="section-label testimonials-label">CLIENT STORIES</div>
+          <h2 class="testimonials-title">TRUSTED BY THE BEST</h2>
+          <p class="testimonials-sub">
+            Real results from businesses who partnered with MURBAN to grow online.
+          </p>
+        </div>
 
-      <div class="testimonials-grid">
-        <div
-          v-for="(t, i) in testimonials"
-          :key="i"
-          class="testimonial-card reveal"
-          :class="'reveal-delay-' + (i + 1)"
-        >
-          <p class="testimonial-text">{{ t.text }}</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">{{ t.initials }}</div>
-            <div>
-              <div class="author-name">{{ t.name }}</div>
-              <div class="author-role">{{ t.role }}</div>
-            </div>
-          </div>
-          <div class="stars">★★★★★</div>
+        <div class="testimonials-grid">
+          <TestimonialCard
+            v-for="(t, i) in testimonials"
+            :key="i"
+            :text="t.text"
+            :name="t.name"
+            :role="t.role"
+            :initials="t.initials"
+            :class="'reveal reveal-delay-' + ((i % 2) + 1)"
+          />
         </div>
       </div>
     </section>
