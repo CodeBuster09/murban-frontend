@@ -25,12 +25,12 @@ const onMouseMove = (e) => {
 }
 
 const onMouseOver = (e) => {
-  if (e.target.closest('a, button, .btn-primary, .btn-ghost, .nav-links a, .router-link-active')) {
+  if (e.target.closest('a, button, .btn-primary, .btn-ghost, .nav-links a, .router-link-active, .service-card')) {
     cursorHover.value = true
   }
 }
 const onMouseOut = (e) => {
-  if (e.target.closest('a, button, .btn-primary, .btn-ghost, .nav-links a, .router-link-active')) {
+  if (e.target.closest('a, button, .btn-primary, .btn-ghost, .nav-links a, .router-link-active, .service-card')) {
     cursorHover.value = false
   }
 }

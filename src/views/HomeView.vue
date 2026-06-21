@@ -110,15 +110,15 @@ const sendContact = async () => {
 }
 
 const services = [
-  { icon: '🎯', title: 'Brand Strategy & Analysis', desc: 'We craft a clear brand identity and competitive analysis to position your business for lasting growth and recognition.' },
-  { icon: '💻', title: 'Web Development', desc: 'Fast, responsive, and conversion-focused websites built to represent your brand and turn visitors into customers.' },
-  { icon: '🤝', title: 'CRM Solutions', desc: 'Streamline customer relationships with smart CRM systems that keep your team organised and your clients happy.' },
-  { icon: '📊', title: 'Lead Management', desc: 'Capture, track, and nurture every lead through a structured pipeline so no opportunity slips through the cracks.' },
-  { icon: '📍', title: 'Business Page Setup', desc: 'Get discovered locally with a fully optimised Google My Business profile that builds trust and drives foot traffic.' },
-  { icon: '📱', title: 'Social Media & WhatsApp Automation', desc: 'Automate WhatsApp conversations, follow-ups, and social media publishing across all platforms — stay consistent and engage your audience on autopilot.' },
-  { icon: '📣', title: 'Meta & Google Ads', desc: 'Run and optimise paid campaigns across Meta and Google Ads to reach the right audience, drive leads, and grow your business with measurable results.' },
-  { icon: '🤖', title: 'AI Automation', desc: 'Replace repetitive tasks with intelligent AI workflows that save time, reduce errors, and scale your operations effortlessly.' },
-  { icon: '🔍', title: 'SEO', desc: 'Rank higher on Google with proven on-page and off-page SEO strategies that bring consistent, organic traffic to your site.' }
+  { icon: 'strategy', title: 'Brand Strategy & Analysis', desc: 'We craft a clear brand identity and competitive analysis to position your business for lasting growth and recognition.' },
+  { icon: 'web', title: 'Web Development', desc: 'Fast, responsive, and conversion-focused websites built to represent your brand and turn visitors into customers.' },
+  { icon: 'crm', title: 'CRM Solutions', desc: 'Streamline customer relationships with smart CRM systems that keep your team organised and your clients happy.' },
+  { icon: 'leads', title: 'Lead Management', desc: 'Capture, track, and nurture every lead through a structured pipeline so no opportunity slips through the cracks.' },
+  { icon: 'local', title: 'Business Page Setup', desc: 'Get discovered locally with a fully optimised Google My Business profile that builds trust and drives foot traffic.' },
+  { icon: 'social', title: 'Social Media & WhatsApp Automation', desc: 'Automate WhatsApp conversations, follow-ups, and social media publishing across all platforms — stay consistent and engage your audience on autopilot.' },
+  { icon: 'ads', title: 'Meta & Google Ads', desc: 'Run and optimise paid campaigns across Meta and Google Ads to reach the right audience, drive leads, and grow your business with measurable results.' },
+  { icon: 'ai', title: 'AI Automation', desc: 'Replace repetitive tasks with intelligent AI workflows that save time, reduce errors, and scale your operations effortlessly.' },
+  { icon: 'seo', title: 'SEO', desc: 'Rank higher on Google with proven on-page and off-page SEO strategies that bring consistent, organic traffic to your site.' }
 ]
 
 const processSteps = [
@@ -283,12 +283,15 @@ onMounted(() => {
     </div>
 
     <!-- Services Section -->
-    <section id="services">
-      <div class="section-label reveal">WHAT WE DO</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        SERVICES <span class="dim">THAT DRIVE</span><br>
-        RESULTS
-      </h2>
+    <section id="services" class="services-section">
+      <div class="services-header reveal">
+        <div class="section-label services-label">WHAT WE DO</div>
+        <h2 class="services-title">SAVE TIME AND MONEY WITH ALL TOOLS IN ONE PLACE</h2>
+        <p class="services-sub">
+          Typical business owners deal with 20+ tools — spreadsheets, CRMs, calendars,
+          payments, and more. Not anymore.
+        </p>
+      </div>
 
       <div class="services-grid">
         <ServiceCard
@@ -297,6 +300,7 @@ onMounted(() => {
           :icon="s.icon"
           :title="s.title"
           :description="s.desc"
+          :class="'reveal reveal-delay-' + ((i % 3) + 1)"
         />
       </div>
     </section>
