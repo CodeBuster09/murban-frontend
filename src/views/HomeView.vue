@@ -7,6 +7,7 @@ import ServiceCard from '../components/ServiceCard.vue'
 
 const contactEmail = ref('')
 const contactMessage = ref('')
+const contactHoneypot = ref('')
 const emailError = ref('')
 const isSending = ref(false)
 
@@ -62,7 +63,7 @@ const sendContact = async () => {
       method: 'POST',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email: emailVal, message: messageVal })
+      body: JSON.stringify({ email: emailVal, message: messageVal, website: contactHoneypot.value })
     })
 
     if (!res.ok) {
@@ -147,6 +148,53 @@ const tickerItems = [
   'WEB DESIGN', 'BRANDING', 'DEVELOPMENT', 'UI/UX', 'E-COMMERCE',
   'MOTION DESIGN', 'SEO STRATEGY', 'CREATIVE DIRECTION'
 ]
+
+const faqs = [
+  {
+    q: 'How is MURBAN different from Wix, Squarespace, or DIY builders?',
+    a: 'Wix and similar tools are something you operate yourself — you\'re still doing the design, updates, and tech work. MURBAN is a managed studio. A real designer shapes your brand, a real developer ships production-grade code, and our team runs and evolves your digital presence. You don\'t wrestle with a drag-and-drop builder. We handle it.'
+  },
+  {
+    q: 'Why is your pricing so low? What\'s the catch?',
+    a: 'There isn\'t one. We automate the grunt work agencies still do by hand — pulling your info, generating layout foundations, running baseline SEO — but a real designer and developer still review and ship every project. The price stays intentionally low because the workflow is streamlined, not because the craft is cut. No setup fees, no hidden costs, and no "introductory" rate that jumps on renewal. What we quote is what you pay.'
+  },
+  {
+    q: 'Will my site look like everyone else\'s?',
+    a: 'No. We start with your actual business — your photos, reviews, copy, and brand voice. Every MURBAN site is built around what makes you different. Two businesses in the same city will never get the same cookie-cutter layout.'
+  },
+  {
+    q: 'Why should I choose MURBAN over another agency?',
+    a: 'You get agency-level strategy, design, and development without bloated timelines or opaque billing. We\'re a full-stack digital partner — web, SEO, CRM, ads, and AI automation under one roof — with a proven four-step process and 98% client retention. You talk directly to the people building your site, not a ticket queue.'
+  },
+  {
+    q: 'How fast can you make changes after launch?',
+    a: 'Most routine updates are handled within 24 hours — often the same day. Reach us by email, text, or chat. No ticket system, no waiting on hold.'
+  },
+  {
+    q: 'Do I pay before I approve the finished site?',
+    a: 'Tell us what you want changed and we\'ll fix it before go-live — or after, as many times as needed. You don\'t start an ongoing plan until you\'ve approved what we built. If we can\'t get it right, you walk away with nothing owed.'
+  },
+  {
+    q: 'Is SEO included, and when will I see results?',
+    a: 'SEO is built in from day one — proper meta tags, schema markup, sitemap, and local signals. Most clients see movement within 60–90 days; competitive markets take longer. We manage your SEO monthly, not just at launch.'
+  },
+  {
+    q: 'I don\'t have a website — or I\'m stuck with an old one. Can you still help?',
+    a: 'This happens more than you\'d think. Share whatever you have — a Google Maps link, your old domain, your Instagram — and we\'ll rebuild from there. You don\'t need anything from your old site to start.'
+  },
+  {
+    q: 'What\'s the difference between MBASIC, MPREMIUM, and MELITE?',
+    plansLink: true,
+    aBefore: 'MBASIC covers essential web development for businesses that need a strong online presence. MPREMIUM adds chatbot and AI automation — our most popular starting point. MELITE is the full suite with CRM for teams ready to capture and manage every lead. Most new clients start on MPREMIUM and expand as they grow. See our ',
+    aAfter: ' for details — pricing is deliberately accessible because great digital work shouldn\'t be gatekept behind traditional agency retainers.'
+  }
+]
+
+const openFaq = ref(null)
+
+const toggleFaq = (index) => {
+  openFaq.value = openFaq.value === index ? null : index
+}
 
 const setupReveal = () => {
   const observer = new IntersectionObserver((entries) => {
@@ -305,6 +353,44 @@ onMounted(() => {
       </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq">
+      <div class="section-label reveal">FAQ</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        QUESTIONS YOU'D ASK <span class="dim">A FRIEND</span>
+      </h2>
+      <p class="faq-sub reveal reveal-delay-2">
+        The questions you'd ask a friend before signing up.
+      </p>
+
+      <div class="faq-list reveal">
+        <div
+          v-for="(item, i) in faqs"
+          :key="i"
+          class="faq-item"
+          :class="{ 'faq-open': openFaq === i }"
+        >
+          <button
+            type="button"
+            class="faq-question"
+            :aria-expanded="openFaq === i"
+            @click="toggleFaq(i)"
+          >
+            <span>{{ item.q }}</span>
+            <span class="faq-icon" aria-hidden="true">{{ openFaq === i ? '−' : '+' }}</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer">
+              <p v-if="item.plansLink">
+                {{ item.aBefore }}<router-link to="/plans" class="faq-link">Plans page</router-link>{{ item.aAfter }}
+              </p>
+              <p v-else>{{ item.a }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Section -->
     <section id="contact" class="cta-section">
       <div class="cta-inner">
@@ -314,6 +400,15 @@ onMounted(() => {
 
         <ScrollReveal animation="fade-up" delay="0.12s">
           <form class="cta-form" @submit.prevent="sendContact">
+            <input
+              type="text"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+              v-model="contactHoneypot"
+              class="cta-honeypot"
+            />
             <input id="contact-email" type="email" placeholder="Enter your email" v-model="contactEmail" :class="['cta-input', { error: emailError }]" @input="emailError = ''" />
             <div v-if="emailError" class="cta-error-message">{{ emailError }}</div>
             <textarea id="contact-message" placeholder="Your question or feedback (optional)" v-model="contactMessage" class="cta-textarea"></textarea>

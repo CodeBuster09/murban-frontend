@@ -76,6 +76,7 @@ onUnmounted(() => {
         <li><a href="/#services">Services</a></li>
         <li><a href="/#process">Process</a></li>
         <li><a href="/#testimonials">Testimonials</a></li>
+        <li><a href="/#faq">FAQ</a></li>
         <li>
           <router-link to="/plans" class="nav-link" :class="{ active: route.name === 'plans' }">
             Plans
@@ -119,6 +120,9 @@ onUnmounted(() => {
           </q-item>
           <q-item clickable v-ripple href="/#testimonials" @click="drawerOpen = false">
             <q-item-section class="text-subtitle1">Testimonials</q-item-section>
+          </q-item>
+          <q-item clickable v-ripple href="/#faq" @click="drawerOpen = false">
+            <q-item-section class="text-subtitle1">FAQ</q-item-section>
           </q-item>
           <q-item clickable v-ripple to="/plans" @click="drawerOpen = false">
             <q-item-section class="text-subtitle1" :class="{ 'text-primary text-weight-bold': route.name === 'plans' }">Plans</q-item-section>
