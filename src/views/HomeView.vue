@@ -6,6 +6,7 @@ import MetricCounter from '../components/MetricCounter.vue'
 import ServiceCard from '../components/ServiceCard.vue'
 import ProcessStepCard from '../components/ProcessStepCard.vue'
 import TestimonialCard from '../components/TestimonialCard.vue'
+import FaqItem from '../components/FaqItem.vue'
 
 const contactEmail = ref('')
 const contactMessage = ref('')
@@ -358,38 +359,31 @@ onMounted(() => {
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq">
-      <div class="section-label reveal">FAQ</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        QUESTIONS YOU'D ASK <span class="dim">A FRIEND</span>
-      </h2>
-      <p class="faq-sub reveal reveal-delay-2">
-        The questions you'd ask a friend before signing up.
-      </p>
+    <section id="faq" class="faq-section">
+      <div class="faq-inner">
+        <div class="faq-header reveal">
+          <div class="section-label faq-label">FAQ</div>
+          <h2 class="faq-title">QUESTIONS YOU'D ASK A FRIEND</h2>
+          <p class="faq-sub">
+            The questions you'd ask a friend before signing up.
+          </p>
+        </div>
 
-      <div class="faq-list reveal">
-        <div
-          v-for="(item, i) in faqs"
-          :key="i"
-          class="faq-item"
-          :class="{ 'faq-open': openFaq === i }"
-        >
-          <button
-            type="button"
-            class="faq-question"
-            :aria-expanded="openFaq === i"
-            @click="toggleFaq(i)"
+        <div class="faq-list">
+          <div
+            v-for="(item, i) in faqs"
+            :key="i"
+            :class="'reveal reveal-delay-' + ((i % 2) + 1)"
           >
-            <span>{{ item.q }}</span>
-            <span class="faq-icon" aria-hidden="true">{{ openFaq === i ? '−' : '+' }}</span>
-          </button>
-          <div class="faq-answer-wrap">
-            <div class="faq-answer">
-              <p v-if="item.plansLink">
-                {{ item.aBefore }}<router-link to="/plans" class="faq-link">Plans page</router-link>{{ item.aAfter }}
-              </p>
-              <p v-else>{{ item.a }}</p>
-            </div>
+            <FaqItem
+              :question="item.q"
+              :answer="item.a"
+              :a-before="item.aBefore"
+              :a-after="item.aAfter"
+              :plans-link="!!item.plansLink"
+              :open="openFaq === i"
+              @toggle="toggleFaq(i)"
+            />
           </div>
         </div>
       </div>
@@ -398,11 +392,15 @@ onMounted(() => {
     <!-- CTA Section -->
     <section id="contact" class="cta-section">
       <div class="cta-inner">
-        <ScrollReveal animation="fade-up" delay="0s">
-          <h2 class="cta-title big">GET IN TOUCH</h2>
-        </ScrollReveal>
+        <div class="cta-header reveal">
+          <div class="section-label cta-label">GET IN TOUCH</div>
+          <h2 class="cta-title">LET'S START YOUR PROJECT</h2>
+          <p class="cta-sub">
+            Have a question or ready to begin? Send us a message — we'll reply shortly.
+          </p>
+        </div>
 
-        <ScrollReveal animation="fade-up" delay="0.12s">
+        <div class="cta-form-wrap reveal reveal-delay-1">
           <form class="cta-form" @submit.prevent="sendContact">
             <input
               type="text"
@@ -424,7 +422,7 @@ onMounted(() => {
               </svg>
             </button>
           </form>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   </div>
