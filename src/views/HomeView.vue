@@ -4,6 +4,7 @@ import { Notify } from 'quasar'
 import ScrollReveal from '../components/ScrollReveal.vue'
 import MetricCounter from '../components/MetricCounter.vue'
 import ServiceCard from '../components/ServiceCard.vue'
+import ProcessStepCard from '../components/ProcessStepCard.vue'
 
 const contactEmail = ref('')
 const contactMessage = ref('')
@@ -122,10 +123,10 @@ const services = [
 ]
 
 const processSteps = [
-  { num: '01', title: 'DISCOVERY', desc: 'Deep dive into your brand, audience, and goals. We align on vision before touching a single pixel.', duration: '1–2 WEEKS' },
-  { num: '02', title: 'DESIGN', desc: 'High-fidelity mockups and interactive prototypes. Every element is meticulously crafted for visual impact.', duration: '2–4 WEEKS' },
-  { num: '03', title: 'DEVELOP', desc: 'Production-grade code with modern frameworks. Performance-optimized, accessible, and rigorously tested.', duration: '4–8 WEEKS' },
-  { num: '04', title: 'DELIVER', desc: 'Launch, iterate, and grow. Ongoing support, analytics review, and continuous optimization post-launch.', duration: 'ONGOING' }
+  { num: '01', title: 'DISCOVERY', desc: 'Deep dive into your brand, audience, and goals. We align on vision before touching a single pixel.' },
+  { num: '02', title: 'DESIGN', desc: 'High-fidelity mockups and interactive prototypes. Every element is meticulously crafted for visual impact.' },
+  { num: '03', title: 'DEVELOP', desc: 'Production-grade code with modern frameworks. Performance-optimized, accessible, and rigorously tested.' },
+  { num: '04', title: 'DELIVER', desc: 'Launch, iterate, and grow. Ongoing support, analytics review, and continuous optimization post-launch.' }
 ]
 
 const testimonials = [
@@ -306,25 +307,26 @@ onMounted(() => {
     </section>
 
     <!-- Process Section -->
-    <section id="process">
-      <div class="section-label reveal">HOW WE WORK</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        OUR <span class="dim">PROVEN</span><br>
-        PROCESS
-      </h2>
+    <section id="process" class="process-section">
+      <div class="process-inner">
+        <div class="process-header reveal">
+          <div class="section-label process-label">HOW WE WORK</div>
+          <h2 class="process-title">OUR PROVEN PROCESS</h2>
+          <p class="process-sub">
+            From first conversation to launch — a clear, four-step path
+            to a digital presence that performs.
+          </p>
+        </div>
 
-      <div class="process-list">
-        <div
-          v-for="(step, i) in processSteps"
-          :key="i"
-          class="process-step reveal"
-          :class="'reveal-delay-' + (i + 1)"
-        >
-          <div class="step-num">{{ step.num }}</div>
-          <div>
-            <div class="step-title">{{ step.title }}</div>
-            <div class="step-desc">{{ step.desc }}</div>
-          </div>
+        <div class="process-grid">
+          <ProcessStepCard
+            v-for="(step, i) in processSteps"
+            :key="i"
+            :num="step.num"
+            :title="step.title"
+            :description="step.desc"
+            :class="'reveal reveal-delay-' + ((i % 4) + 1)"
+          />
         </div>
       </div>
     </section>
